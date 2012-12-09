@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" media="all" href=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
+	<!-- LESS framework stylesheet
+	Should be compiled from style.less
+	I use http://wearekiss.com/simpless for auto-compiling on save
+	-->
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Primary Stylesheet" charset="utf-8">
+
+	<!-- Bring in animate.css | http://daneden.me/animate/ -->
+	<!--<link rel="stylesheet" href="animate.css" type="text/css" media="screen" title="no title" charset="utf-8"> -->
+
+	<!-- Bring in jQuery first, lots of other stuff depends on it -->
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.hoverintent.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- And underscore | http://documentcloud.github.com/underscore/
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>	-->
+
+	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference -->
+	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- And the Open Sans Google Webfont | https://www.google.com/webfonts#UsePlace:use/Collection:Open+Sans-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,800,300' rel='stylesheet' type='text/css'>
+
+	<script src="js/ICanHaz.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/storyjs-embed.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="timeline.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+	<script src="js/sStory.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/jquery.scrollorama.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36906290-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>	
+
+
+
+</head>
+
+<body>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	
+<div id="nav">
+
+</div>
+<div id="nav-expand">&nbsp;</div>
+
+<div id="container">
+
+</div>
+
+<script id="image" type="text/html">
+<h2>{{{ title }}}</h2>
+</script>
+
+<script id="image2" type="text/html">
+<h2>{{{ title }}}</h2>
+<div class="imagecaption"><p>{{{ caption }}}</p></div>
+</script>
+
+<script id="image3" type="text/html">
+<h2>{{ title }}</h2>
+<div class="imagecaption longcaption"><p>{{{ caption }}}</p></div>
+</script>
+
+<script id="vimeo2" type="text/html">
+<div class="video-container">
+<iframe src="{{ url }}" width="400" height="300" frameborder="0" wmode="transparent" webkitAllowFullScreen mozallowfullscreen allowFullScreen><param name="wmode" value="opaque"></iframe>
+</div>
+{{#caption}}
+<div class="video-caption">
+{{caption}}
+</div>
+{{/caption}}
+</script>
+
+<script id="vimeo" type="text/html">
+<div class="video-container">
+<iframe src="http://player.vimeo.com/video/{{ id }}?byline=0&portrait=0&color=ffffff" width="400" height="300" frameborder="0" wmode="transparent" webkitAllowFullScreen mozallowfullscreen allowFullScreen><param name="wmode" value="opaque"></iframe>		
+</div>
+{{#text}}
+<div class="video-caption">
+{{text}}
+<br><a href='{{code}}' target="_blank">code</a>
+<a href="http://vimeo.com/{{ id }}" target="_blank">video</a>
+</div>
+{{/text}}
+</script>
+
+
+
+<script id="soundcloud" type="text/html">
+<div class="soundcloud-container">
+{{#title}}
+<h2>{{ title }}</h2>
+{{/title}}
+		{{{ embed }}}
+</div>
+</script>
+
+<script id="text" type="text/html">
+{{#title}}
+<h2>{{ title }}</h2>
+{{/title}}
+<div class="text-container">
+{{{ text }}}
+</div>
+</script>
+
+
+
+
+
+<script id="navbarsection" type="text/html">
+<a class="nav-section" href="#section-{{count}}" id="nav-section-{{count}}"><img src="images/type_icons/{{type}}.png" height="18px" width="18px" class="type-icon" /> {{ title }}</a>
+</script>
+
+<script type="text/javascript" charset="utf-8">
+
+var examplesections = [
+{
+    title: "dot append"
+    ,type: "image2"
+//    ,url: "http://d3a9pqeyre6pa0.cloudfront.net/wp-content/uploads/2010/07/cropped-turtle_nom1.jpg"
+    ,url: "http://enjalot-tribstyle.s3.amazonaws.com/dotappend_cover.svg"
+    ,shade: "light"
+    ,caption: "hello world, i'm <a href='http://twitter.com/enjalot'>@enjalot</a> and this is <b>dot append</b>, vol. 2 of the dot enter mixtape series.<br> checkout <a href='http://enjalot.github.com/dot-enter/'>dot enter vol. 1</a><br><a href='https://vimeo.com/search?q=enjalot+dot+append' target='about:blank'>thumbnail view</a>"
+},
+{
+	title: "intro"
+	,type: "vimeo"
+    ,id: "55189471"
+	,height: "500px"  
+    ,text: "introducing the mixtape and what you can expect!"
+    ,code: "http://tributary.io/inlet/4242928/"
+},
+{
+	title: "drag behavior"
+	,type: "vimeo"
+    ,id: "55190007"
+	,height: "500px"  
+    ,text: "demystifying d3's drag behavior. click and hold that shit!"
+    ,code: "http://tributary.io/inlet/3998628/"
+},
+{
+	title: "electron"
+	,type: "vimeo"
+    ,id: "55189467"
+	,height: "500px"  
+    ,text: "jumpin off like an electron. constrain drag behavior to a circle with trigonometry"
+    ,code: "http://tributary.io/inlet/3998699/"
+},
+{
+	title: "brush"
+	,type: "vimeo"
+    ,id: "55189135"
+	,height: "500px"  
+    ,text: "brush your shoulders off. learn how to use the d3 brush component"
+    ,code: "http://tributary.io/inlet/3998749/"
+},
+{
+	title: "path composing"
+	,type: "vimeo"
+    ,id: "55190009"
+	,height: "500px"  
+    ,text: "there's more than one way to skin a cat. there's also more than way to put together an svg path"
+    ,code: "http://tributary.io/inlet/4101113/"
+},
+{
+	title: "gaffta workshop"
+	,type: "vimeo"
+    ,id: "55189470"
+	,height: "500px"  
+    ,text: "interlude: In November I gave a workshop at GAFFTA in San Francisco. It was hella fun, and this is what we did"
+    ,code: "http://enjalot.github.com/intro-d3/gaffta/"
+},
+{
+	title: "crossfilter"
+	,type: "vimeo"
+    ,id: "55189134"
+	,height: "500px"  
+    ,text: "the video i wish i had when i was learning it. crossfilter walkthrough!"
+    ,code: "http://tributary.io/inlet/4101924/"
+},
+{
+	title: "custom filter"
+	,type: "vimeo"
+    ,id: "55189133"
+	,height: "500px"  
+    ,text: "sometimes crossfilter just isn't enough. luckily jason davies has given us custom filters for crossfilter!"
+    ,code: "http://tributary.io/inlet/4102201/"
+},
+{
+	title: "move along"
+	,type: "vimeo"
+    ,id: "49974370"
+	,height: "500px"  
+    ,text: "this is some pretty tricky SVG hacking, but i love it for the technique"
+    ,code: "http://enjalot.com/tributary/3758369/"
+},
+{
+	title: "fisheye"
+	,type: "vimeo"
+    ,id:"55189469"
+	,height: "500px"  
+    ,text: "why you lookin at me funny? let's play with the fisheye d3 plugin"
+    ,code: "http://tributary.io/inlet/4102812/"
+},
+{
+	title: "parallel coordinates"
+	,type: "vimeo"
+    ,id: "55190008"
+	,height: "500px"  
+    ,text: "just because we think in 3 dimensions doesn't mean you can't show more! parallel coordinates for the win"
+    ,code: "http://tributary.io/inlet/4101682/"
+},
+
+{
+	title: "outro"
+	,type: "vimeo"
+    ,id: "55189472"
+	,height: "500px"  
+    ,text: "much love! thank you! till next time. 100"
+    ,code: "http://tributary.io/inlet/4211048/"
+},
+{
+    title: "dot exit"
+    ,type: "image2"
+    ,url: "http://enjalot-tribstyle.s3.amazonaws.com/dotappend_cover.svg"
+    ,shade: "light"
+    ,caption: "this has been <b>dot append</b>, a side effect of <a target='_blank' href='http://tributary.io/'>tributary</a> <br> mixtape cover art by <a target='_blank' href='https://twitter.com/bausofthenauf'>@bausofthenauf</a><br>page put together with <a target='_blank' href='https://github.com/ejfox/sStory'>sStory</a> by <a target='_blank' href='https://twitter.com/mrejfox'>@ejfox</a><br><br>follow me <a target='_blank' href='http://twitter.com/enjalot'>@enjalot</a><br>i blog d3 + tributary stuff <a target='_blank' href='http://enja.org'>here</a> <br> Join our <a target='_blank' href='https://groups.google.com/forum/?fromgroups#!forum/tributary'>google group</a> to discuss tributary features and usage! <br> <a target='_blank' href='https://twitter.com/hellomainstem'>mainstem</a> represent!<br><br><a href='https://twitter.com/share' class='twitter-share-button' data-text='i'm bumpin #d3js mixtape dot enter' data-via='enjalot'>Tweet</a>"
+}
+]
+
+
+
+$(document).ready(function(){
+	sStory(examplesections);
+
+
+});
+
+
+</script>
+
+</body>
+</html>
