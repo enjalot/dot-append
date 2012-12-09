@@ -33,7 +33,6 @@ makeNavbar = function(sections) {
     $("#nav").append($(ich.navbarsection(section)));
   }
   $("#nav-expand").on('click', function() {
-    console.log('clicked');
     if ($("#nav").hasClass("nav-expanded")) {
       return $("#nav").removeClass("nav-expanded");
     } else {
@@ -248,7 +247,6 @@ sStory = function(sections) {
   return scrollorama.onBlockChange(function() {
     var i;
     i = scrollorama.blockIndex;
-    console.log(i);
     $("#nav a").removeClass("current-section");
     return $("#nav-section-" + (i + 1)).addClass("current-section");
   });
