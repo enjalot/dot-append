@@ -23,6 +23,7 @@ makeNavbar = function(sections) {
   nav_sections = sections;
   for (_i = 0, _len = nav_sections.length; _i < _len; _i++) {
     section = nav_sections[_i];
+    if(section.type === "text") continue;
     sectioncount++;
     section.count = sectioncount;
     if (section.title !== void 0) {
